@@ -7,6 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import static com.codeborne.selenide.Selenide.page;
 
 public class BasePage {
+    public static String BASE_URL = "https://stellarburgers.nomoreparties.site";
+    public static String REGISTER_URL = BASE_URL + "/register";
+    public static String FORGOT_PASS_URL = BASE_URL + "/forgot-password";
+
     // Локатор кнопки "Личный кабинет"
     @FindBy(xpath = ".//p[contains(text(),'Личный Кабинет')]")
     private SelenideElement profileButton;

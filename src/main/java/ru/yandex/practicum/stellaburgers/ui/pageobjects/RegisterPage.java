@@ -8,11 +8,11 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class RegisterPage extends BasePage {
     //Локатор поля ввода имени
-    @FindBy(xpath = "//input[@name='name']")
+    @FindBy(xpath = "//label[text() = 'Имя']/following-sibling::input")
     private SelenideElement nameInput;
 
     // Локатор поля ввода электронной почты
-    @FindBy(xpath = "//input[@value='']")
+    @FindBy(xpath = "//label[text() = 'Email']/following-sibling::input")
     private SelenideElement emailInput;
 
     //Локатор поля ввода пароля

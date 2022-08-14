@@ -12,6 +12,11 @@ import ru.yandex.practicum.stellaburgers.api.models.User;
 import static io.restassured.RestAssured.given;
 
 public class ApiClient {
+    private static String BASE_URI = "https://stellarburgers.nomoreparties.site";
+    private static String REGISTER_PATH = "/api/auth/register";
+    private static String LOGIN_PATH = "/api/auth/login";
+    private static String USER_PATH = "/api/auth/user";
+
     private String accessToken = "";
 
     public void setAccessToken(String token){
@@ -20,7 +25,7 @@ public class ApiClient {
 
     public static RequestSpecification getReqSpec() {
         return new RequestSpecBuilder()
-                .setBaseUri("https://stellarburgers.nomoreparties.site")
+                .setBaseUri(BASE_URI)
                 .setContentType(ContentType.JSON)
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
@@ -33,7 +38,7 @@ public class ApiClient {
                 .spec(getReqSpec())
                 .body(user)
                 .when()
-                .post("/api/auth/register");
+                .post(REGISTER_PATH);
     }
 
     @Step("Логин пользователя через API")
@@ -42,7 +47,7 @@ public class ApiClient {
                 .spec(getReqSpec())
                 .body("{\"email\":\"" + email + "\",\"password\":\"" + password + "\"}")
                 .when()
-                .post("/api/auth/login");
+                .post(LOGIN_PATH);
     }
 
     @Step("Удаление пользователя через API")
@@ -52,6 +57,6 @@ public class ApiClient {
                 .auth()
                 .oauth2(accessToken)
                 .when()
-                .delete("/api/auth/user");
+                .delete(USER_PATH);
     }
 }

@@ -54,26 +54,30 @@ public class MainPage extends BasePage{
         return makeOrderButton.isDisplayed();
     }
 
+    public SelenideElement getBreadButton() {
+        return breadButton;
+    }
+
+    public SelenideElement getSauceButton() {
+        return sauceButton;
+    }
+
+    public SelenideElement getFillingButton() {
+        return fillingButton;
+    }
+
     @Step("Переход к разделу с начинками")
-    public boolean transitionFillingChapter() {
+    public void clickFillingChapter() {
         fillingButton.click();
-        fillingButton.shouldBe(Condition.visible);
-        return true;
     }
 
     @Step("Переход к разделу с соусами")
-    public boolean transitionSauceChapter() {
+    public void clickSauceChapter() {
         sauceButton.click();
-        sauceButton.shouldBe(Condition.visible);
-        return true;
     }
 
     @Step("Переход к разделу с булками")
-    public boolean transitionBreadChapter() {
-        sauceButton.click();
+    public void clickBreadChapter() {
         breadButton.click();
-        fluorescentBun.shouldBe(Condition.visible);
-        return true;
     }
-
 }
